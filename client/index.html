@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Home</title>
+        <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+        <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="main.css" />
+        <script type="text/javascript" src="main.js"></script>
+	</head>
+	<body ng-app="fileUpload">
+		<!--<h1>Please upload product Detail</h1>-->
+        <!--<form  ng-controller="MyCtrl as up" name="up.upload_form">-->
+                <!--Enter Image-->
+            <!--<input-->
+                <!--type="file"-->
+                <!--ngf-select-->
+                <!--ng-model="up.file"-->
+                <!--name="file"-->
+                <!--ngf-pattern="'image/*'"-->
+                <!--accept="image/*"-->
+                <!--ngf-max-size="20MB"-->
+                <!--/>-->
+            <!--&lt;!&ndash;Image thumbnail: <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>&ndash;&gt;-->
+            <!--<i ng-show="up.upload_form.file.$error.required">*required</i><br>-->
+            <!--<i ng-show="up.upload_form.file.$error.maxSize">File too large{{up.file.size / 1000000|number:1}}MB: max 20M</i>-->
+           <!--&lt;!&ndash;  Multiple files-->
+            <!--<div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>-->
+            <!--Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> &ndash;&gt;-->
+            <!--<input type="text" minlength="5" ng-model="productName" placeholder="enter product name" required />-->
+            <!--<input type="text" minlength="2" ng-model="productPrice" placeholder="enter product price" required />-->
+            <!--<button type="submit" ng-click="up.submit()">submit</button>-->
+        <!--</form>-->
+        <div class="container">
+            <form id="authForm" ng-hide="authenticated" ng-controller="MyCtrl as up" name="up.auth_form">
+                <h4 style="text-align:center;margin-bottom:15px;font-size:14px">Please Login</h4>
+                <fieldset>
+                    <input type="text" minlength="5" ng-model="userName" class="form-control" id="userName" aria-describedby="userName" placeholder="Enter your name" required>
+                </fieldset>
+                <fieldset>
+                    <input type="text" minlength="2" ng-model="credential" class="form-control" id="credential"  placeholder="Enter your password" required>
+                </fieldset>
+                <fieldset>
+                    <button type="submit" ng-click="up.authenticateUser()" class="btn btn-primary">Submit</button>
+                </fieldset>
+            </form>
+            <form id="productForm" ng-show="authenticated" ng-controller="MyCtrl as up" name="up.upload_form">
+                <h2 style="text-align:left;font-size: 16px;margin-bottom: 9px;">Add your product
+                    <span style="font-size:14px;text-align:right;margin-left: 260px" ng-click="logout()"> logout
+                    </span>
+                </h2>
+                <fieldset>
+                    <input type="text" minlength="5" ng-model="productName" class="form-control" id="productName" aria-describedby="productHelp" placeholder="Enter the product name you would like to add" required>
+                </fieldset>
+                <fieldset>
+                    <input type="text" minlength="2" ng-model="productPrice" class="form-control" id="productPrice" aria-describedby="productPriceHelp" placeholder="Enter the product price" required>
+                </fieldset>
+                <fieldset>
+                    <input type="text" minlength="4" ng-model="productDimension" class="form-control" id="productDimension" aria-describedby="productDimensionHelp" placeholder="Enter the product Dimesions" required>
+                </fieldset>
+                <fieldset>
+                    <input type="text" minlength="3" ng-model="productColor" class="form-control" id="productColor" aria-describedby="productColorHelp" placeholder="Enter the product color" required>
+                </fieldset>
+                <fieldset>
+                    <input type="file"
+                           ngf-select
+                           ng-model="up.file"
+                           name="file"
+                           ngf-pattern="'image/*'"
+                           accept="image/*"
+                           ngf-max-size="20MB"
+                           class="form-control-file"
+                           id="InputFile"
+                           aria-describedby="fileHelp" required>
+                    <small id="fileHelp" class="form-text text-muted">select image file from your gallery
+                    </small>
+                </fieldset>
+                <fieldset>
+                    <button type="submit" ng-click="up.submit()" class="btn btn-primary">Submit</button>
+                </fieldset>
+            </form>
+            <p class="copyright">Designed by <a href="" target="_blank" title="Colorlib">Outlier</a></p>
+        </div>
+	</body>
+</html>
